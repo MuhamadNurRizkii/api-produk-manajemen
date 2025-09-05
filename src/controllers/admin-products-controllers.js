@@ -90,7 +90,7 @@ export const updateProductById = async (req, res) => {
     });
 
     if (!imageProduct) {
-      return res.status(404).json({ message: "Image not found" });
+      return res.status(400).json({ message: "Image not found" });
     }
 
     let updateData = { name, description, price, stock, type };
@@ -120,6 +120,29 @@ export const updateProductById = async (req, res) => {
     return res
       .status(201)
       .json({ message: "Product berhasil diupdate", updateProduct });
+  } catch (error) {
+    console.log("Terjadi kesalahan:", error);
+  }
+};
+
+export const deleteProductById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(400).json({ message: "Id tidak ditemukan" });
+    }
+
+    const image = await product.findById(id, { imageId: 1 });
+
+    // delete image
+    if (image.imageId) {
+      await cloudinary.uploader.destroy(image.imageId);
+    }
+
+    // delete data
+    await product.findByIdAndDelete(id);
+
+    return res.json({ message: "Product berhasil dihapus" });
   } catch (error) {
     console.log("Terjadi kesalahan:", error);
   }
