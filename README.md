@@ -80,3 +80,118 @@
   "message": "error message"
 }
 ```
+
+
+---
+<br/>
+
+## **READ By Id - GET:** 
+
+
+**URL** : `/admin/api/products/:id`  
+**Method** : `GET`  
+
+### 🚀 Response Body
+
+*success status*: `200`
+
+```json 
+{
+  "message": "succes message",
+  "data" : [
+      "_id": "68ba4cabbac3c...",
+      "name": "name",
+      "description": "description",
+      "price": 18000,
+      "stock": 10,
+      "type": "Makanan",
+      "imageUrl": "url_image",
+      "imageId": "id_image"
+  ]
+}
+```
+
+*success error*: `400`
+
+```json 
+{
+  "message": "error message"
+}
+```
+
+---
+<br/>
+
+## **UPDATE - PUT:** 
+
+
+**URL** : `/admin/api/products/edit/:id`  
+**Method** : `PUT`  
+**Content-Type** : `multipart/form-data`
+
+### 📝 Request Body
+| Field        | Type   | Required | 
+|--------------|--------|----------|
+| name         | String | ✅       | 
+| description  | Number | ✅       | 
+| price        | Number | ✅       | 
+| stock        | Number | ✅       | 
+| type         | String [Makanan,Minuman] | ✅ |
+| image        | file   | ✅ |
+
+<br/>
+
+### 🚀 Response Body
+
+*success status*: `201`
+
+```json 
+{
+  "message": "succes message",
+  "data" : [
+      "_id": "68ba4cabbac3c...",
+      "name": "name",
+      "description": "description",
+      "price": 18000,
+      "stock": 10,
+      "type": "Makanan",
+      "imageUrl": "url_image",
+      "imageId": "id_image"
+  ]
+}
+```
+
+*success error*: `400`
+
+```json 
+{
+  "message": "error message"
+}
+```
+
+
+<br/>
+
+## **DELETE by Id - DELETE:** 
+
+
+**URL** : `/admin/api/products/delete/:id`  
+**Method** : `DELETE`  
+
+### 🚀 Response Body
+
+*success status*: `200`
+
+```json 
+{
+  "message": "succes message",
+}
+```
+
+*success error*: `400`
+
+```json 
+{
+  "message": "error message"
+}
+```
