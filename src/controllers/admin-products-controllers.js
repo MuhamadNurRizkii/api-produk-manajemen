@@ -28,9 +28,7 @@ export const createProductController = async (req, res) => {
       imageId: uploadImage.public_id,
     });
 
-    return res
-      .status(201)
-      .json({ message: "Product berhasil ditambahkan", data: newProduct });
+    return res.status(201).json({ message: "Product berhasil ditambahkan" });
   } catch (err) {
     console.log("Terjadi kesalahan:", err);
   }
