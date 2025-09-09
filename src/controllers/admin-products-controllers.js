@@ -84,9 +84,7 @@ export const searchProductController = async (req, res, next) => {
   try {
     const { name } = req.query;
 
-    const query = name
-      ? { $or: [{ name: { $regex: name, $options: "i" } }] }
-      : {};
+    const query = name ? { name: { $regex: name, $options: "i" } } : {};
 
     const products = await product.find(query, { __v: 0 });
 
