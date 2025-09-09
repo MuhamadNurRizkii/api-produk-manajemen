@@ -91,6 +91,47 @@ _success error_: `400`
 
 <br/>
 
+## **READ - GET:**
+
+**URL** : `/admin/api/products/search?name=mie ayam`  
+**Method** : `GET`
+
+### 🚀 Response Body
+
+_success status_: `200`
+
+```json
+{
+  "total": 1,
+  "data": [
+    {
+      "_id": "68c02d6a8496...",
+      "name": "Mie Ayam",
+      "description": "Mie Ayam dengan ayam segar",
+      "price": 10000,
+      "stock": 50,
+      "type": "Makanan",
+      "imageUrl": "url image",
+      "imageId": "id image",
+      "createdAt": "2025-09-09T13:36:42.177Z",
+      "updatedAt": "2025-09-09T13:36:42.177Z"
+    }
+  ]
+}
+```
+
+_success error_: `400`
+
+```json
+{
+  "message": "error message"
+}
+```
+
+---
+
+<br/>
+
 ## **READ By Id - GET:**
 
 **URL** : `/admin/api/products/:id`  

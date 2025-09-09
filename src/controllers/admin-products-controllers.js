@@ -80,6 +80,27 @@ export const getProductByIdController = async (req, res, next) => {
   }
 };
 
+export const searchProductController = async (req, res, next) => {
+  try {
+    const { name } = req.query;
+
+    const query = name
+      ? { $or: [{ name: { $regex: name, $options: "i" } }] }
+      : {};
+
+    const products = await product.find(query, { __v: 0 });
+
+    if (!products) {
+      return next(new ResponseError(400, "Product tidak ditemukan"));
+    }
+
+    return res.json({ total: products.length, data: products });
+  } catch (error) {
+    console.log("Terjadi kesalahan:", error);
+    next(error);
+  }
+};
+
 export const updateProductById = async (req, res, next) => {
   try {
     const { id } = req.params;
