@@ -11,7 +11,7 @@ const productSchema = new Schema(
     imageUrl: { type: String, required: true },
     imageId: { type: String, required: true },
   },
-  { createdAt: true }
+  { timestamps: true }
 );
 
 const product = mongoose.model("products", productSchema);

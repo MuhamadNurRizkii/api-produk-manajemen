@@ -6,96 +6,101 @@
 <br/>
 <br/>
 
-## **CREATE - POST:** 
-
+## **CREATE - POST:**
 
 **URL** : `/admin/api/products/add`  
 **Method** : `POST`  
 **Content-Type** : `multipart/form-data`
 
 ### 📝 Request Body
-| Field        | Type   | Required | 
-|--------------|--------|----------|
-| name         | String | ✅       | 
-| description  | Number | ✅       | 
-| price        | Number | ✅       | 
-| stock        | Number | ✅       | 
-| type         | String [Makanan,Minuman] | ✅ |
-| image        | file   | ✅ |
+
+| Field       | Type                     | Required |
+| ----------- | ------------------------ | -------- |
+| name        | String                   | ✅       |
+| description | Number                   | ✅       |
+| price       | Number                   | ✅       |
+| stock       | Number                   | ✅       |
+| type        | String [Makanan,Minuman] | ✅       |
+| image       | file                     | ✅       |
 
 <br/>
 
-
 ### 🚀 Response Body
 
-*success status*: `201`
+_success status_: `201`
 
-```json 
+```json
 {
   "message": "succes message"
 }
 ```
 
-*success error*: `400`
+_success error_: `400`
 
-```json 
+```json
 {
   "message": "error message"
 }
 ```
 
 ---
+
 <br/>
 
-## **READ - GET:** 
+## **READ - GET:**
 
-
-**URL** : `/admin/api/products`  
-**Method** : `GET`  
+**URL** : `/admin/api/products?page=1&limit=10`  
+**Method** : `GET`
 
 ### 🚀 Response Body
 
-*success status*: `200`
+_success status_: `200`
 
-```json 
+```json
 {
-  "message": "succes message",
-  "data" : [
-      "_id": "68ba4cabbac3c...",
-      "name": "name",
-      "description": "description",
-      "price": 18000,
-      "stock": 10,
+  "message": "Product berhasil diambil",
+  "total": 1,
+  "page": 1,
+  "totalPage": 1,
+  "data": [
+    {
+      "_id": "68c02d6a8496....",
+      "name": "Mie Ayam",
+      "description": "Mie Ayam dengan ayam tiren",
+      "price": 10000,
+      "stock": 50,
       "type": "Makanan",
-      "imageUrl": "url_image",
-      "imageId": "id_image"
+      "imageUrl": "url image",
+      "imageId": "id image",
+      "createdAt": "2025-09-09T13:36...",
+      "updatedAt": "2025-09-09T13:36..."
+    }
   ]
 }
 ```
 
-*success error*: `400`
+_success error_: `400`
 
-```json 
+```json
 {
   "message": "error message"
 }
 ```
 
-
 ---
+
 <br/>
 
-## **READ By Id - GET:** 
-
+## **READ By Id - GET:**
 
 **URL** : `/admin/api/products/:id`  
-**Method** : `GET`  
+**Method** : `GET`
 
 ### 🚀 Response Body
 
-*success status*: `200`
+_success status_: `200`
 
-```json 
+```json
 {
   "message": "succes message",
   "data" : [
@@ -111,41 +116,42 @@
 }
 ```
 
-*success error*: `400`
+_success error_: `400`
 
-```json 
+```json
 {
   "message": "error message"
 }
 ```
 
 ---
+
 <br/>
 
-## **UPDATE - PUT:** 
-
+## **UPDATE - PUT:**
 
 **URL** : `/admin/api/products/edit/:id`  
 **Method** : `PUT`  
 **Content-Type** : `multipart/form-data`
 
 ### 📝 Request Body
-| Field        | Type   | Required | 
-|--------------|--------|----------|
-| name         | String | ✅       | 
-| description  | Number | ✅       | 
-| price        | Number | ✅       | 
-| stock        | Number | ✅       | 
-| type         | String [Makanan,Minuman] | ✅ |
-| image        | file   | ✅ |
+
+| Field       | Type                     | Required |
+| ----------- | ------------------------ | -------- |
+| name        | String                   | ✅       |
+| description | Number                   | ✅       |
+| price       | Number                   | ✅       |
+| stock       | Number                   | ✅       |
+| type        | String [Makanan,Minuman] | ✅       |
+| image       | file                     | ✅       |
 
 <br/>
 
 ### 🚀 Response Body
 
-*success status*: `201`
+_success status_: `201`
 
-```json 
+```json
 {
   "message": "succes message",
   "data" : [
@@ -161,36 +167,34 @@
 }
 ```
 
-*success error*: `400`
+_success error_: `400`
 
-```json 
+```json
 {
   "message": "error message"
 }
 ```
 
-
 <br/>
 
-## **DELETE by Id - DELETE:** 
-
+## **DELETE by Id - DELETE:**
 
 **URL** : `/admin/api/products/delete/:id`  
-**Method** : `DELETE`  
+**Method** : `DELETE`
 
 ### 🚀 Response Body
 
-*success status*: `200`
+_success status_: `200`
 
-```json 
+```json
 {
-  "message": "succes message",
+  "message": "succes message"
 }
 ```
 
-*success error*: `400`
+_success error_: `400`
 
-```json 
+```json
 {
   "message": "error message"
 }

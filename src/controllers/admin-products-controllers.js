@@ -17,8 +17,6 @@ export const createProductController = async (req, res, next) => {
       crop: "scale",
     });
 
-    console.log(uploadImage);
-
     await product.create({
       name,
       description,
@@ -38,13 +36,23 @@ export const createProductController = async (req, res, next) => {
 
 export const getProductsController = async (req, res, next) => {
   try {
-    const data = await product.find({}, { __v: 0 });
+    let { page = 1, limit = 10 } = req.query;
+    page = parseInt(page);
+    limit = parseInt(limit);
 
-    if (!data) {
-      return next(new ResponseError(400, "products tidak ditemukan"));
-    }
+    const skip = (page - 1) * limit;
 
-    return res.json({ message: "Data product berhasil diambil", data });
+    const products = await product.find({}, { __v: 0 }).skip(skip).limit(limit);
+
+    const total = await product.countDocuments();
+
+    return res.json({
+      message: "Product berhasil diambil",
+      total,
+      page,
+      totalPage: Math.ceil(total / limit),
+      data: products,
+    });
   } catch (error) {
     console.log("Terjadi kesalahan:", error);
     next(err);
